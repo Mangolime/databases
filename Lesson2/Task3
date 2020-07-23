@@ -1,0 +1,51 @@
+nina@nina-VirtualBox:~$ mysqldump example > example.sql
+nina@nina-VirtualBox:~$ ls
+ example.sql   Task2.sql   Загрузки      Общедоступные
+ Hello.sql     Видео       Изображения  'Рабочий стол'
+ mysql.sql     Документы   Музыка        Шаблоны
+nina@nina-VirtualBox:~$ mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 25
+Server version: 8.0.20-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE sample
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> exit
+Bye
+nina@nina-VirtualBox:~$ mysql sample < example.sql
+nina@nina-VirtualBox:~$ mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 27
+Server version: 8.0.20-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE sample
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW TABLES
+    -> ;
++------------------+
+| Tables_in_sample |
++------------------+
+| users            |
++------------------+
+1 row in set (0.01 sec)
